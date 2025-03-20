@@ -26,7 +26,7 @@ function initMap() {
 
         // Add a marker (optional)
         const marker = new google.maps.Marker({
-            position: { lat: -34.397, lng: 150.644 },
+            position: { lat: -33.977, lng: 18.695 },
             map: map,
             title: 'Hello World!'
         });
