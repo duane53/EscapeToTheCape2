@@ -2,7 +2,7 @@ function initMap() {
     try {
         // Initialize the map
         const map = new google.maps.Map(document.getElementById('map-container'), {
-            center: { lat: -34.397, lng: 150.644 }, // Default center (Sydney)
+            center: { lat: -33.977, lng: 18.695 }, // Default center (Sydney)
             zoom: 8
         });
 
