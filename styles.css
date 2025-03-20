@@ -47,7 +47,7 @@ main {
 }
 
 #map-container {
-    width: 100%;
+    width: 50%;
     height: 400px;
     background-color: #ccc;
 }
