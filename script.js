@@ -8,14 +8,14 @@ function initMap() {
 
         // Add autocomplete to the pickup field
         const pickupInput = document.getElementById('pickup');
-        const pickupAutocomplete = new google.maps.places.Autocomplete(pickupInput, {
+        const pickupAutocomplete = new google.maps.marker.AdvancedMarkerElement(pickupInput, {
             fields: ['address_components', 'geometry', 'name'], // Specify the fields to return
             types: ['geocode'], // Restrict to geographic locations
         });
 
         // Add autocomplete to the dropoff field
         const dropoffInput = document.getElementById('dropoff');
-        const dropoffAutocomplete = new google.maps.places.Autocomplete(dropoffInput, {
+        const dropoffAutocomplete = new google.maps.marker.AdvancedMarkerElement(dropoffInput, {
             fields: ['address_components', 'geometry', 'name'], // Specify the fields to return
             types: ['geocode'], // Restrict to geographic locations
         });
