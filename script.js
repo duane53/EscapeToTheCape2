@@ -1,21 +1,56 @@
-// Toggle sidebar
+// Global variables
+let pickupAutocomplete;
+let dropoffAutocomplete;
+const isMobile = window.matchMedia("(max-width: 991px)").matches;
+
+// DOM Elements
 const menuToggle = document.getElementById('menu-toggle');
 const sidebar = document.getElementById('sidebar');
 const overlay = document.getElementById('overlay');
 const closeMenu = document.getElementById('close-menu');
+const rideForm = document.getElementById('rideForm');
+const pickupInput = document.getElementById('pickup');
+const dropoffInput = document.getElementById('dropoff');
 
-menuToggle.addEventListener('click', () => {
-    document.body.classList.add('sidebar-open');
-});
+// Initialize sidebar functionality
+function initSidebar() {
+    // Only show toggle button on mobile
+    if (isMobile) {
+        menuToggle.style.display = 'block';
+    } else {
+        menuToggle.style.display = 'none';
+        document.body.classList.add('desktop-sidebar-open');
+    }
 
-closeMenu.addEventListener('click', () => {
-    document.body.classList.remove('sidebar-open');
-});
+    menuToggle.addEventListener('click', () => {
+        document.body.classList.toggle('sidebar-open');
+    });
 
-overlay.addEventListener('click', () => {
-    document.body.classList.remove('sidebar-open');
-});
+    closeMenu.addEventListener('click', () => {
+        if (isMobile) {
+            document.body.classList.remove('sidebar-open');
+        } else {
+            document.body.classList.remove('desktop-sidebar-open');
+        }
+    });
 
+    overlay.addEventListener('click', () => {
+        if (isMobile) {
+            document.body.classList.remove('sidebar-open');
+        } else {
+            document.body.classList.remove('desktop-sidebar-open');
+        }
+    });
+
+    // Close sidebar when clicking on menu items (mobile only)
+    if (isMobile) {
+        document.querySelectorAll('#sidebar a').forEach(item => {
+            item.addEventListener('click', () => {
+                document.body.classList.remove('sidebar-open');
+            });
+        });
+    }
+}
 // Initialize Google Maps and Autocomplete
 function initMap() {
     try {
