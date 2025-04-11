@@ -261,3 +261,50 @@ input, select, button, a {
         font-size: 16px;
     }
 }
+/* Desktop Sidebar Behavior */
+.desktop-sidebar-open #sidebar {
+    left: 0;
+}
+
+.desktop-sidebar-open main {
+    margin-left: 280px;
+}
+
+/* Hide overlay on desktop */
+@media (min-width: 992px) {
+    #overlay {
+        display: none;
+    }
+    
+    #close-menu {
+        display: none;
+    }
+    
+    #sidebar {
+        left: 0;
+    }
+    
+    main {
+        margin-left: 280px;
+    }
+}
+
+/* Mobile behavior remains the same */
+@media (max-width: 991px) {
+    #sidebar {
+        left: -280px;
+    }
+    
+    main {
+        margin-left: 0;
+    }
+    
+    .sidebar-open #sidebar {
+        left: 0;
+    }
+    
+    .sidebar-open #overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+}
