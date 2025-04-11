@@ -2,39 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cape Shuttle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Shuttle Service Booking</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Cape Shuttle</h1>
+        <div class="header-container">
+            <h1>Shuttle Service</h1>
+            <button id="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+        </div>
     </header>
+
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h2>Menu</h2>
+            <button id="close-menu" aria-label="Close menu">&times;</button>
+        </div>
+        <ul>
+            <li><a href="#" class="active">Book Ride</a></li>
+            <li><a href="#">My Trips</a></li>
+            <li><a href="#">Payment</a></li>
+            <li><a href="#">Notifications</a></li>
+            <li><a href="#">Support</a></li>
+        </ul>
+    </nav>
+
+    <div id="overlay"></div>
 
     <main>
         <section id="booking-form">
-            <h2>Book a Ride</h2>
+            <h2>Book Your Ride</h2>
             <form id="rideForm">
-                <label for="pickup">Pickup Location:</label>
-                <input type="text" id="pickup" name="pickup" placeholder="Enter pickup location" required>
-
-                <label for="dropoff">Dropoff Location:</label>
-                <input type="text" id="dropoff" name="dropoff" placeholder="Enter dropoff location" required>
-
-                <label for="time">Pickup Time:</label>
-                <input type="datetime-local" id="time" name="time" required>
-
-                <button type="submit">Book Ride</button>
+                <div class="form-group">
+                    <label for="pickup">Pickup Location</label>
+                    <input type="text" id="pickup" name="pickup" placeholder="Enter pickup address" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dropoff">Dropoff Location</label>
+                    <input type="text" id="dropoff" name="dropoff" placeholder="Enter destination" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="time">Pickup Time</label>
+                    <input type="datetime-local" id="time" name="time" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="passengers">Passengers</label>
+                    <select id="passengers" name="passengers">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4+</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn-primary">Confirm Booking</button>
             </form>
         </section>
 
-        <section id="map">
-            <h2>Map</h2>
-            <div id="map-container" style="height: 400px;"></div>
+        <section id="map-section">
+            <div id="map-container"></div>
         </section>
     </main>
 
     <script src="script.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC46MIPbQEpRAl5-qaxfx55inCXUwFIWR4&libraries=places&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap"></script>
 </body>
 </html>
