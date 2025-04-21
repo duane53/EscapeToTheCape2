@@ -282,3 +282,11 @@ input, select, button, a {
     margin-bottom: 1.5rem;
     line-height: 1.6;
 }
+/* Smooth page transitions */
+a {
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
