@@ -11,24 +11,41 @@ const rideForm = document.getElementById('rideForm');
 const pickupInput = document.getElementById('pickup');
 const dropoffInput = document.getElementById('dropoff');
 
-// Initialize sidebar functionality
+// Make this function reusable for both pages
 function initSidebar() {
-    menuToggle.addEventListener('click', () => {
-        document.body.classList.add('sidebar-open');
-    });
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const closeMenu = document.getElementById('close-menu');
 
-    closeMenu.addEventListener('click', () => {
-        document.body.classList.remove('sidebar-open');
-    });
+    if (menuToggle && sidebar) {
+        menuToggle.addEventListener('click', () => {
+            document.body.classList.add('sidebar-open');
+        });
 
-    overlay.addEventListener('click', () => {
-        document.body.classList.remove('sidebar-open');
-    });
-
-    // Close sidebar when clicking on menu items
-    document.querySelectorAll('#sidebar a').forEach(item => {
-        item.addEventListener('click', () => {
+        closeMenu.addEventListener('click', () => {
             document.body.classList.remove('sidebar-open');
+        });
+
+        overlay.addEventListener('click', () => {
+            document.body.classList.remove('sidebar-open');
+        });
+
+        // Close sidebar when clicking on menu items (mobile only)
+        if (window.matchMedia("(max-width: 991px)").matches) {
+            document.querySelectorAll('#sidebar a').forEach(item => {
+                item.addEventListener('click', () => {
+                    document.body.classList.remove('sidebar-open');
+                });
+            });
+        }
+    }
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+    initSidebar();
+
         });
     });
 }
